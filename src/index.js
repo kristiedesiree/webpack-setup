@@ -1,3 +1,4 @@
+import './style.scss';
 console.log('Logging from the entrypoint, index.js')
 
 const es6Function = () => {
