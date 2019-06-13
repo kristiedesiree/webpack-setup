@@ -1,0 +1,1 @@
+console.log('Logging from the entrypoint, index.js')
