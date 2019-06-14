@@ -29,7 +29,12 @@ module.exports = {
       },
       {
         test: /\.(jpeg|jpg|png|gif)$/,
-        use: 'file-loader'
+        use: {
+          loader: 'file-loader',
+          options: {
+            emitFile: false
+          }
+        }
       },
       {
         test: /\.svg$/,
@@ -46,7 +51,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: './dist/template.html'
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css'
     })
