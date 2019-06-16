@@ -1,12 +1,13 @@
 import React from 'react';
 
 class App extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     images: []
-  //   }
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      images: [],
+      selectedImage: {}
+    }
+  }
 
   render() {
   return (
