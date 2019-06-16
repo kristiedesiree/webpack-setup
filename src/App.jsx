@@ -1,6 +1,8 @@
 import React from 'react';
 import sampleImages from './sampleImageGenerator.js';
 import PhotoGallery from './PhotoGallery.jsx';
+import PhotoCell from './PhotoCell.jsx';
+
 
 class App extends React.Component {
   constructor(props) {
