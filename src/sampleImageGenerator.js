@@ -4,7 +4,7 @@ let createSampleImages = function(number) {
   let images = [];
   for (var i = 0; i < number; i++) {
     let image = {};
-    image.url = faker.image.imageUrl();
+    image.url = 'https://picsum.photos/200/300';
     image.caption = faker.lorem.sentence();
     images.push(image);
   }
