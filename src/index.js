@@ -1,4 +1,7 @@
 import './style.scss';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App.jsx';
 console.log('Logging from the entrypoint, index.js')
 
 const es6Function = () => {
@@ -6,3 +9,7 @@ const es6Function = () => {
 };
 
 es6Function();
+
+ReactDOM.render(<App />, document.getElementById('root'))
+
+console.log('line after REACTDOM render exec')
