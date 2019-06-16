@@ -3,14 +3,14 @@ import PhotoCell from './PhotoCell.jsx';
 
 let PhotoGallery = (props) => {
   let { images, selectedImage } = props;
+  const listImages = images.map((image, id) =>
+    <PhotoCell key={id} image={image}/>
+  );
 
   return (
     <div>
-      This is my gallery "container" component
-      <PhotoCell image={selectedImage} />
-      {images.map((image, index) => {
-        <PhotoCell key={index} image={image} />
-      })}
+      Gallery here
+     {listImages}
     </div>
   )
   
