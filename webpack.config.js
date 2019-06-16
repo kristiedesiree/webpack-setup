@@ -37,9 +37,6 @@ module.exports = {
         test: /\.(jpeg|jpg|png|gif)$/,
         use: {
           loader: 'file-loader',
-          options: {
-            emitFile: false
-          }
         }
       },
       {
