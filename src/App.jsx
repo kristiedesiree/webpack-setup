@@ -1,5 +1,7 @@
 import React from 'react';
-import sampleImages from './sampleImageGenerator.js'
+import sampleImages from './sampleImageGenerator.js';
+import PhotoGallery from './PhotoGallery.jsx';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -14,6 +16,7 @@ class App extends React.Component {
     <div>
       Rendered the App component
       Gallery component will be rendered within the app component
+      <PhotoGallery images={ this.state.images } selectedImage={ this.state.selectedImage } />
     </div>
   );
   }
