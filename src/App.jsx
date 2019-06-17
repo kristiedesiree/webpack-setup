@@ -12,23 +12,28 @@ class App extends React.Component {
       dragStart: null,
       dragEnd: null,
     }
-    this.clickHandler = this.clickHandler.bind(this)
+    this.changePhoto = this.changePhoto.bind(this);
+    this.getDragCoordinate = this.getDragCoordinate.bind(this);
   }
 
   componentDidMount() {
-    this.setState({images: sampleImages, selectedImage: sampleImages[0], selectedImageId: 0});
+    if (sampleImages.length > 0) {
+      this.setState({images: sampleImages, selectedImage: sampleImages[0], selectedImageId: 0});
+    } else {
+      this.setState({images: [], selectedImage: {url: '', caption: 'No images to display'}, selectedImageId: null});
+    } 
   }
 
   render() {
     return (
       <div>
         <h1>Photo Gallery</h1>
-        <PhotoGallery clickHandler = { this.clickHandler } images={ this.state.images } selectedImage={ this.state.selectedImage } selectedImageId = {this.state.selectedImageId} getDragCoordinate={this.getDragCoordinate.bind(this)}  />
+        <PhotoGallery images={ this.state.images } selectedImage={ this.state.selectedImage } selectedImageId = {this.state.selectedImageId} getDragCoordinate={this.getDragCoordinate} changePhoto = { this.changePhoto } />
       </div>
     );
   }
 
-  clickHandler(direction) {
+  changePhoto(direction) {
     let currentId = this.state.selectedImageId;
     if (direction === 'left') {
       currentId-1 >= 0 ? currentId-- : currentId; 
@@ -41,23 +46,17 @@ class App extends React.Component {
       selectedImageId: currentId,
       dragStart: null,
       dragEnd: null
-    }, () => {
-      console.log('clickHandler fired, time to reset drags', this.state.dragStart, this.state.dragEnd)
     });
   }  
 
   getDragCoordinate(event, type) {
     if (type === 'start') {
-       this.setState({dragStart: event.screenX}, () => {
-         console.log('start', this.state.dragStart)
-       })
+       this.setState({dragStart: event.screenX});
     } 
     if (type === 'end') {
       this.setState({dragEnd: event.screenX}, () => {
-        console.log('end', this.state.dragEnd)
-        console.log('clickHandler Time')
-      this.state.dragStart - this.state.dragEnd > 0 ? this.clickHandler('left') : this.clickHandler('right');
-      })
+      this.state.dragStart - this.state.dragEnd > 0 ? this.changePhoto('left') : this.changePhoto('right');
+      });
     }
   }
 }
