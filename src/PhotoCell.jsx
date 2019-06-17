@@ -1,11 +1,10 @@
 import React from 'react';
 
 let PhotoCell = (props) => {
-  let { id, image, selectedImage, selectedImageId } = props;
-  console.log('selecId', selectedImageId)
+  let { id, image, selectedImageId, getDragStart, getDragEnd } = props;
   if (id === selectedImageId) {
     return (
-    <div>
+    <div onMouseDown= {()=> {getDragStart(event)}} onMouseUp = {()=> {getDragEnd(event)}}>
      <p> {image.caption} </p>
      <img src={image.url}/>
     </div>
