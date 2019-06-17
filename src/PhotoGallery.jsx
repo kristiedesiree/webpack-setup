@@ -5,13 +5,14 @@ import Flexbox from 'flexbox-react';
 
 let PhotoGallery = (props) => {
   let { images, selectedImage, selectedImageId, changePhoto, getDragCoordinate} = props;
- 
+  let galleryContents = images.map((image, index) => {
+           return <PhotoCell key={ index } id={ index } image={ image } numPhotos = {images.length} selectedImageId={ selectedImageId } getDragCoordinate={getDragCoordinate} />
+  }); 
+
   return (
       <Flexbox className="gallery" flexDirection="row" justifyContent="center" alignItems="center">
        <button id="left" className="navigate" onClick={() => {changePhoto('left')}}> {'<'} </button>
-        {images.map((image, index) => {
-           return <PhotoCell key={ index } id={ index } image={ image } selectedImage={ selectedImage } selectedImageId={ selectedImageId } getDragCoordinate={getDragCoordinate} />
-        })}  
+        {galleryContents}
        <button id="right" className="navigate" onClick={() => {changePhoto('right')}}> {'>'} </button>
     </Flexbox>
   )
