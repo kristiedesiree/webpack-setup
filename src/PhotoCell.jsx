@@ -4,10 +4,10 @@ let PhotoCell = (props) => {
   let { id, image, selectedImageId, getDragCoordinate } = props;
   if (id === selectedImageId) {
     return (
-    <div onMouseDown= {()=> {getDragCoordinate(event, 'start')}} onMouseUp = {()=> {getDragCoordinate(event, 'end')}}>
+    <span id="photoViewer" onMouseDown= {()=> {getDragCoordinate(event, 'start')}} onMouseUp = {()=> {getDragCoordinate(event, 'end')}}>
      <p> {image.caption} </p>
-     <img src={image.url}/>
-    </div>
+     <img className="photo" src={image.url}/>
+    </span>
   )  
   } else {
     return ''
