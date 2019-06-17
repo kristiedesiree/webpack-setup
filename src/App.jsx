@@ -28,7 +28,21 @@ class App extends React.Component {
       </div>
     );
   }
-  
+
+  clickHandler(direction) {
+    let currentId = this.state.selectedImageId;
+    if (direction === 'left') {
+      currentId-1 >= 0 ? currentId-- : currentId; 
+    } else if (direction === 'right') {
+      currentId+1 < this.state.images.length ? currentId++ : currentId;
+    }
+    
+    this.setState({
+      selectedImage: this.state.images[currentId],
+      selectedImageId: currentId,
+    });
+    console.log(currentId)
+  }  
 
   
 }
