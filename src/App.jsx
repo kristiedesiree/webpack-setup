@@ -10,6 +10,7 @@ class App extends React.Component {
       selectedImage: {},
       selectedImageId: null,
     }
+    this.clickHandler = this.clickHandler.bind(this)
   }
 
   componentDidMount() {
@@ -24,7 +25,7 @@ class App extends React.Component {
     return (
       <div>
         Rendered the App component
-        <PhotoGallery images={ this.state.images } selectedImage={ this.state.selectedImage } selectedImageId = {this.state.selectedImageId}/>
+        <PhotoGallery clickHandler = { this.clickHandler } images={ this.state.images } selectedImage={ this.state.selectedImage } selectedImageId = {this.state.selectedImageId}/>
       </div>
     );
   }
@@ -43,8 +44,6 @@ class App extends React.Component {
     });
     console.log(currentId)
   }  
-
-  
 }
 
 export default App;
