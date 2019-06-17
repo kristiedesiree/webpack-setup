@@ -4,13 +4,13 @@ import PhotoCell from './PhotoCell.jsx';
 import './swipe.scss'
 
 let PhotoGallery = (props) => {
-  let { images, selectedImage, selectedImageId, clickHandler, getDragStart, getDragEnd } = props;
+  let { images, selectedImage, selectedImageId, clickHandler, getDragCoordinate} = props;
  
   return (
     <div>
        <button id= "left" className="navigate" onClick={() => {clickHandler('left')}}> LEFT </button>
         {images.map((image, index) => {
-           return <PhotoCell id={ index } key={ index } image={ image } selectedImage={ selectedImage } selectedImageId={ selectedImageId } getDragStart={getDragStart} getDragEnd={getDragEnd}/>
+           return <PhotoCell id={ index } key={ index } image={ image } selectedImage={ selectedImage } selectedImageId={ selectedImageId } getDragCoordinate={getDragCoordinate} />
         })}  
        <button id="right" className="navigate" onClick={() => {clickHandler('right')}}> RIGHT </button>
       Gallery here
