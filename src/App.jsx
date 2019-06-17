@@ -1,6 +1,7 @@
 import React from 'react';
 import sampleImages from './sampleImageGenerator.js';
 import PhotoGallery from './PhotoGallery.jsx';
+import { Gallery, GalleryImage } from "../src";
 
 class App extends React.Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class App extends React.Component {
     return (
       <div>
         Rendered the App component
-        <PhotoGallery clickHandler = { this.clickHandler } images={ this.state.images } selectedImage={ this.state.selectedImage } selectedImageId = {this.state.selectedImageId}/>
+        <PhotoGallery clickHandler = { this.clickHandler } images={ this.state.images } selectedImage={ this.state.selectedImage } selectedImageId = {this.state.selectedImageId} getDragStart={this.getDragStart.bind(this)} getDragEnd={this.getDragEnd.bind(this)} />
       </div>
     );
   }
@@ -42,8 +43,17 @@ class App extends React.Component {
       selectedImage: this.state.images[currentId],
       selectedImageId: currentId,
     });
-    console.log(currentId)
   }  
+
+  getDragStart(event) {
+    console.log(event.screenX);
+  }
+
+  getDragEnd(event) {
+    console.log(event.screenX);
+  }
 }
+
+  
 
 export default App;
