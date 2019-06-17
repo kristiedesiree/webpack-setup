@@ -20,7 +20,7 @@ class App extends React.Component {
     if (sampleImages.length > 0) {
       this.setState({images: sampleImages, selectedImage: sampleImages[0], selectedImageId: 0});
     } else {
-      this.setState({images: [], selectedImage: {url: '', caption: 'No images to display'}, selectedImageId: null});
+      this.setState({images: [{url: 'https://s3.amazonaws.com/FringeBucket/image_placeholder.png', caption: 'No images to display'}], selectedImage: this.state.images[0], selectedImageId: 0});
     } 
   }
 
