@@ -10,6 +10,8 @@ class App extends React.Component {
       images: [],
       selectedImage: {},
       selectedImageId: null,
+      dragStart: null,
+      dragEnd: null,
     }
     this.clickHandler = this.clickHandler.bind(this)
   }
@@ -26,7 +28,7 @@ class App extends React.Component {
     return (
       <div>
         Rendered the App component
-        <PhotoGallery clickHandler = { this.clickHandler } images={ this.state.images } selectedImage={ this.state.selectedImage } selectedImageId = {this.state.selectedImageId} getDragStart={this.getDragStart.bind(this)} getDragEnd={this.getDragEnd.bind(this)} />
+        <PhotoGallery clickHandler = { this.clickHandler } images={ this.state.images } selectedImage={ this.state.selectedImage } selectedImageId = {this.state.selectedImageId} getDragCoordinate={this.getDragCoordinate.bind(this)}  />
       </div>
     );
   }
@@ -42,16 +44,36 @@ class App extends React.Component {
     this.setState({
       selectedImage: this.state.images[currentId],
       selectedImageId: currentId,
+      dragStart: null,
+      dragEnd: null
+    }, () => {
+      console.log('clickHandler fired, time to reset drags', this.state.dragStart, this.state.dragEnd)
     });
+
   }  
 
-  getDragStart(event) {
-    console.log(event.screenX);
+  getDragCoordinate(event, type) {
+    if (type === 'start') {
+       this.setState({dragStart: event.screenX}, () => {
+         console.log('start', this.state.dragStart)
+       })
+    } 
+    if (type === 'end') {
+      this.setState({dragEnd: event.screenX}, () => {
+        console.log('end', this.state.dragEnd)
+        console.log('clickHandler Time')
+      this.state.dragStart - this.state.dragEnd > 0 ? this.clickHandler('left') : this.clickHandler('right');
+      })
+    }
+    
+    // console.log(event.screenX);
   }
 
-  getDragEnd(event) {
-    console.log(event.screenX);
-  }
+  // getDragEnd(event) {
+  //   console.log(event.screenX);
+  // }
+
+
 }
 
   
