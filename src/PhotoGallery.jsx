@@ -4,15 +4,15 @@ import './style.scss'
 import Flexbox from 'flexbox-react';
 
 let PhotoGallery = (props) => {
-  let { images, selectedImage, selectedImageId, clickHandler, getDragCoordinate} = props;
+  let { images, selectedImage, selectedImageId, changePhoto, getDragCoordinate} = props;
  
   return (
       <Flexbox className="gallery" flexDirection="row" justifyContent="center" alignItems="center">
-       <button id= "left" className="navigate" onClick={() => {clickHandler('left')}}> {'<'} </button>
+       <button id="left" className="navigate" onClick={() => {changePhoto('left')}}> {'<'} </button>
         {images.map((image, index) => {
-           return <PhotoCell id={ index } key={ index } image={ image } selectedImage={ selectedImage } selectedImageId={ selectedImageId } getDragCoordinate={getDragCoordinate} />
+           return <PhotoCell key={ index } id={ index } image={ image } selectedImage={ selectedImage } selectedImageId={ selectedImageId } getDragCoordinate={getDragCoordinate} />
         })}  
-       <button id="right" className="navigate" onClick={() => {clickHandler('right')}}> {'>'} </button>
+       <button id="right" className="navigate" onClick={() => {changePhoto('right')}}> {'>'} </button>
     </Flexbox>
   )
 }
