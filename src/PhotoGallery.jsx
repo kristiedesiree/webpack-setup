@@ -1,16 +1,18 @@
 import React from 'react';
 import PhotoCell from './PhotoCell.jsx';
 
+
 let PhotoGallery = (props) => {
-  let { images, selectedImage } = props;
-  const listImages = images.map((image, id) =>
-    <PhotoCell key={id} image={image}/>
-  );
+  let { images, selectedImage, selectedImageId, drag } = props;
 
   return (
     <div>
+       {images.map((image, index) => {
+          return <PhotoCell id={ index } key={ index } image={ image } selectedImage={ selectedImage } selectedImageId={ selectedImageId }/>
+       })}  
+  
       Gallery here
-     {listImages}
+     
     </div>
   )
   
