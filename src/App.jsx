@@ -1,7 +1,6 @@
 import React from 'react';
 import sampleImages from './sampleImageGenerator.js';
 import PhotoGallery from './PhotoGallery.jsx';
-import { Gallery, GalleryImage } from "../src";
 
 class App extends React.Component {
   constructor(props) {
@@ -17,17 +16,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({images: sampleImages, selectedImage: sampleImages[0], selectedImageId: 0}, () => {
-      console.log(this.state.images)
-      console.log(this.state.selectedImage)
-    }
-    );
+    this.setState({images: sampleImages, selectedImage: sampleImages[0], selectedImageId: 0});
   }
 
   render() {
     return (
       <div>
-        Rendered the App component
+        <h1>Photo Gallery</h1>
         <PhotoGallery clickHandler = { this.clickHandler } images={ this.state.images } selectedImage={ this.state.selectedImage } selectedImageId = {this.state.selectedImageId} getDragCoordinate={this.getDragCoordinate.bind(this)}  />
       </div>
     );
@@ -49,7 +44,6 @@ class App extends React.Component {
     }, () => {
       console.log('clickHandler fired, time to reset drags', this.state.dragStart, this.state.dragEnd)
     });
-
   }  
 
   getDragCoordinate(event, type) {
@@ -65,17 +59,8 @@ class App extends React.Component {
       this.state.dragStart - this.state.dragEnd > 0 ? this.clickHandler('left') : this.clickHandler('right');
       })
     }
-    
-    // console.log(event.screenX);
   }
-
-  // getDragEnd(event) {
-  //   console.log(event.screenX);
-  // }
-
-
 }
 
   
-
 export default App;
