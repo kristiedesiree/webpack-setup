@@ -40,6 +40,7 @@
     "flexbox-react": "^4.4.0",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.9",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "url-loader": "^2.0.0"
   }
 }
