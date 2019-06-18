@@ -11,5 +11,3 @@ const es6Function = () => {
 es6Function();
 
 ReactDOM.render(<App />, document.getElementById('root'))
-
-console.log('line after REACTDOM render exec')
