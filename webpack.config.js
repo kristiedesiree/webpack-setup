@@ -49,7 +49,10 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
+              name: "[name].[hash].[ext]",
+              outputPath: "svgs",
               limit: 1000000,
+
               fallback: 'file-loader'
             }
           }
