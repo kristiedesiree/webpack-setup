@@ -1,6 +1,9 @@
 import React from 'react';
 import sampleImages from './sampleImageGenerator.js';
 import PhotoGallery from './PhotoGallery.jsx';
+import image1 from './assets/cat.png';
+import image2 from './assets/matlab.gif';
+import image3 from './assets/mushrooms.jpg';
 
 class App extends React.Component {
   constructor(props) {
@@ -51,7 +54,7 @@ class App extends React.Component {
 
   getDragCoordinate(event, type) {
     if (type === 'start') {
-       this.setState({dragStart: event.screenX});
+      this.setState({dragStart: event.screenX});
     } 
     if (type === 'end') {
       this.setState({dragEnd: event.screenX}, () => {
